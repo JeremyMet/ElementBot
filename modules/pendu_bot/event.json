@@ -1,0 +1,122 @@
+{
+  "bar": {
+    "weight" : 4,
+    "message" : "Le bot noie sa tristesse par une consommation excessive d'un chouchen \uD83C\uDF7A local aux relents douteux ... Son ivresse altère sa vision (Mot affiché à l'envers) !",
+    "min_lg" : 5,
+    "max_lg" : 30,
+    "bonus_life" : 0,
+    "mirror" : "yes",
+    "language" : "fr",
+    "unauthorized_letters" : []
+  },
+  "extra_life": {
+    "weight" : 2,
+    "message" : "Le soleil brille \u2600\uFE0F, l'air est vivifiant. Le bot est heureux et vous accorde 1 point de vie supplémentaire (pdv +1).",
+    "min_lg" : 5,
+    "max_lg" : 30,
+    "bonus_life" : 1,
+    "mirror" : "no",
+    "language" : "fr",
+    "unauthorized_letters" : []
+  },
+ "mot_long": {
+    "weight" : 5,
+    "message" : "Le bot aime voir la vie en grand \uD83E\uDD29 ! (Mot de 15 lettres ou plus, pdv +2) !",
+    "min_lg" : 15,
+    "max_lg" : 30,
+    "bonus_life" : 2,
+    "mirror" : "no",
+    "language" : "fr",
+    "unauthorized_letters" : []
+  },
+  "pas_content": {
+    "weight" : 1,
+    "message" : "La pleine lune \uD83C\uDF15 affecte l'humeur du bot ... :-( Grrr, des poils lui poussent ! Il n'a pas l'air content (pdv -1) !",
+    "min_lg" : 5,
+    "max_lg" : 30,
+    "bonus_life" : -1,
+    "mirror": "no",
+    "language" : "fr",
+    "unauthorized_letters" : []
+  },
+  "petit_mot": {
+    "weight" : 2,
+    "message" : "Les petites choses sont tellement mignonnes \uD83D\uDC08 (Mot de 6 lettres max, pdv -3) ! ",
+    "min_lg" : 4,
+    "max_lg" : 6,
+    "bonus_life" : -3,
+    "mirror": "no",
+    "language" : "fr",
+    "unauthorized_letters" : []
+  },
+  "one_shot": {
+    "weight" : 1,
+    "message" : "Le bot est <b>furieux</b> \uD83D\uDE21 ! Qu'avez-vous fait ?! Pas le droit à l'erreur cette fois ci ... (pdv -5) !",
+    "min_lg" : 6,
+    "max_lg" : 8,
+    "bonus_life" : -5,
+    "mirror": "no",
+    "language" : "fr",
+    "unauthorized_letters" : []
+  },
+  "la_disparation": {
+    "weight" : 4,
+    "message" : "Disparition \uD83D\uDCD6 ... Disparition \uD83D\uDCD6 ... Tbot admir_ G_org_s P_r_c ... Il n_ v_ut plus d_ <b>\"E\"</b> ! Plus du tout ! (Vous ne pouvez pas jouer la lettre \"E\").",
+    "min_lg" : 6,
+    "max_lg" : 10,
+    "bonus_life" : 0,
+    "mirror": "no",
+    "language" : "fr",
+    "unauthorized_letters" : ["e"]
+  },
+  "pas_de_voyelles": {
+    "weight" : 4,
+    "message" : "Voyez-vous donc, pas de voyelles \uD83D\uDCD6 !  (Vous ne pouvez pas jouer de voyelles <b>A, E, I, O, U, Y</b> ... pdv +1).",
+    "min_lg" : 6,
+    "max_lg" : 12,
+    "bonus_life" : 1,
+    "mirror": "no",
+    "language" : "fr",
+    "unauthorized_letters" : ["a", "e", "i", "o", "u", "y"]
+  },
+  "zozote": {
+    "weight" : 4,
+    "message" : "Le bot a un ceveu sur la langue \uD83D\uDC45 et ... zozote !  (Vous ne pouvez pas jouer les lettres <b>S, Z</b>).",
+    "min_lg" : 5,
+    "max_lg" : 15,
+    "bonus_life" : 0,
+    "mirror": "no",
+    "language" : "fr",
+    "unauthorized_letters" : ["s", "z"]
+  },
+  "english_lord": {
+    "weight" : 3,
+    "message" : "\uD83C\uDDEC\uD83C\uDDE7 God save our gracious Queen, Long live our noble Queen ! \uD83C\uDDEC\uD83C\uDDE7 (Sir, You are looking for an <b>English Word</b>! Pdv +1!)",
+    "min_lg" : 5,
+    "max_lg" : 20,
+    "bonus_life" : 1,
+    "mirror": "no",
+    "language" : "en",
+    "unauthorized_letters" : []
+  },
+  "sherlock_holmes": {
+    "weight" : 3,
+    "message" : "\uD83C\uDDEC\uD83C\uDDE7 Tbot is desperately asking for help \"Sherlock, this must be another code to break!\". Holmes \uD83D\uDD75\uD83C\uDFFC suddenly turns back and says \"Elementary, my dear Tbot!\" (<b>English Word</b>, Word is <b>reversed</b>).",
+    "min_lg" : 5,
+    "max_lg" : 18,
+    "bonus_life" : 0,
+    "mirror": "yes",
+    "language" : "en",
+    "unauthorized_letters" : []
+  },
+  "french_man": {
+    "weight" : 3,
+    "message" : "\uD83C\uDDEC\uD83C\uDDE7 Tbot is trying to learn english! \uD83E\uDD16: \"<i>I am ZE best, ZIS is easy!</i>\". His french accent is so cuuute! \uD83E\uDD56 \uD83C\uDDEB\uD83C\uDDF7 (<b>English Word</b>, Letters <b>T, H</b> are forbidden).",
+    "min_lg" : 5,
+    "max_lg" : 18,
+    "bonus_life" : 0,
+    "mirror": "no",
+    "language" : "en",
+    "unauthorized_letters" : ["t","h"]
+  }
+}

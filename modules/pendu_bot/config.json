@@ -1,0 +1,16 @@
+{
+   "dico_path":[
+      {
+         "language":"fr",
+         "path":"./modules/pendu_bot/dico_fr.txt",
+         "emoji": "\uD83C\uDDEB\uD83C\uDDF7"
+      },
+      {
+         "language":"en",
+         "path":"./modules/pendu_bot/dico_en.txt",
+         "emoji":"\uD83C\uDDEC\uD83C\uDDE7"
+      }
+   ],
+   "score_path":"./modules/pendu_bot/score.txt",
+   "event_path":"./modules/pendu_bot/event.json"
+}

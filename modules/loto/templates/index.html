@@ -1,0 +1,33 @@
+<html>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+  <head>
+  </head>
+ <body>
+   <title>&#127920; Tbot's Loto</title>
+  <h1>~~~ &#127920; Tbot's Loto &#127920; ~~~<h1>
+  <h2>Score du Mois (Courant) {{current_date[0]}} {{current_date[1]}}</h2>
+    <table style="width:20%">
+     {%for i in range(0, length)%}
+         <tr>
+           <td>{{score_array[i][0]}}</td>
+           <td>{{score_array[i][1]}}</td>
+       </tr>
+     {%endfor%}
+   </table>
+
+{%for i in range(0, autre_len)%}
+  <h2>Score du Mois {{autre[i][0]}} {{autre[i][1]}}</h2>
+  <table style="width:20%">
+    {%for j in range(0, autre[i][2])%}
+       <tr>
+         <td>{{autre[i][3][j][0]}}</td>
+         <td>{{autre[i][3][j][1]}}</td>
+     </tr>
+    {%endfor%}
+  </table>
+{%endfor%}
+
+
+
+ </body>
+</html>
