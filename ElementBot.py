@@ -40,8 +40,8 @@ class elementBot(object):
         await self.client.login(password);
         gaming_id_tmp = await self.client.join(self.gaming_room);
         self.gaming_id = gaming_id_tmp.room_id;
-        self.client.add_event_callback(self.message_cb, RoomMessageText);
         self.is_running = True;
+        self.client.add_event_callback(self.message_cb, RoomMessageText);
     #
     async def start_listening(self, msg=None):
         if msg:
@@ -53,12 +53,9 @@ class elementBot(object):
     #
     async def message_cb(self, room, event):
         # On ignore les messages pendant 5 secondes ...
-        # if not(self.toggle):
-        #     if ((datetime.datetime.now()-self.launch_at).seconds > 5):
-        #         self.toggle = True;
-        print(room);
-        print(event);
-        self.toggle = True;
+        if not(self.toggle):
+            if ((datetime.datetime.now()-self.launch_at).seconds > 5):
+                self.toggle = True;
         if (self.toggle and event.sender != self.login and room.room_id == self.gaming_id):
             tmp_log = "Event" + bcolors.OKGREEN + " at " + str(datetime.datetime.now())+ bcolors.ENDC + " by "+ bcolors.OKBLUE + event.sender +bcolors.ENDC ;
             print(tmp_log);
@@ -97,8 +94,8 @@ class elementBot(object):
                 await self.send_message(clean(answer));
 #
 async def main():
-    host = "https://mandragot.org";
-    login = "@tersa_bot:mandragot.org";
+    host = "https://matrix.org";
+    login = "@tbot1337:matrix.org";
     gaming_room = "#papotage_gaming_unlock:mandragot.org";
     elementBot_inst = elementBot(host, login, gaming_room);
     #
@@ -106,7 +103,7 @@ async def main():
     my_mastermind = mastermind_bot(); elementBot_inst.add_module(my_mastermind);
     my_quotes = quotes() ; elementBot_inst.add_module(my_quotes)
     #
-    await elementBot_inst.connect("XXX");
+    await elementBot_inst.connect("jaimelemelon");
     await elementBot_inst.start_listening("Hello, I'm Tbot!");
 
 
