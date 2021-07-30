@@ -49,13 +49,14 @@ class pendu_bot(module):
                 return "tbot pendu propose A pour proposer la lettre A, \n \
     tbot pendu show montre l'état actuel du mot, \n \
     tbot pendu event montre l'event en cours (s'il y en a)";
-            elif args[0] == "event":
+            elif args[1] == "event":
                 return self.pendu.show_event() ;
         else:
             return None ;
     #
     def run_on_clock(self, room=None):
-        if self.get_clock() > 36000: # 10 hours.
+        if self.get_clock() > 3600: # 1 hour.
+            self.pendu.save_score() ;
             self.reset_clock() ;
             return "\u26A0\uFE0F Rappel ! \n \n "+self.pendu.show_lt()+"\n"+str(self.pendu) ;
     #
@@ -65,8 +66,6 @@ class pendu_bot(module):
             return "\u26A0\uFE0F Oooh Non ! Vous avez été trop lents \U0001F606 ! Le mot cherché était \"<b>{}</b>\".".format(self.pendu.current_word);
         else:
             return None;
-
-
 
 if __name__ == "__main__":
     pb = pendu_bot() ;
