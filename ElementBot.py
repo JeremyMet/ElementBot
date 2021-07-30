@@ -94,8 +94,8 @@ class elementBot(object):
                 await self.send_message(clean(answer));
 #
 async def main():
-    host = "https://matrix.org";
-    login = "@tbot1337:matrix.org";
+    host = "https://mandragot.org";
+    login = "@tersa_bot:mandragot.org";
     gaming_room = "#papotage_gaming_unlock:mandragot.org";
     elementBot_inst = elementBot(host, login, gaming_room);
     #
@@ -103,7 +103,7 @@ async def main():
     my_mastermind = mastermind_bot(); elementBot_inst.add_module(my_mastermind);
     my_quotes = quotes() ; elementBot_inst.add_module(my_quotes)
     #
-    await elementBot_inst.connect("jaimelemelon");
+    await elementBot_inst.connect("XXX");
     await elementBot_inst.start_listening("Hello, I'm Tbot!");
 
 
