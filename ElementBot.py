@@ -56,6 +56,8 @@ class elementBot(object):
         # if not(self.toggle):
         #     if ((datetime.datetime.now()-self.launch_at).seconds > 5):
         #         self.toggle = True;
+        print(room);
+        print(event);
         self.toggle = True;
         if (self.toggle and event.sender != self.login and room.room_id == self.gaming_id):
             tmp_log = "Event" + bcolors.OKGREEN + " at " + str(datetime.datetime.now())+ bcolors.ENDC + " by "+ bcolors.OKBLUE + event.sender +bcolors.ENDC ;
