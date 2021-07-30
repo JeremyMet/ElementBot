@@ -56,7 +56,7 @@ class pendu_bot(module):
             return None ;
     #
     def run_on_clock(self, room=None):
-        if self.get_clock() > 10: # 10 hours.
+        if self.get_clock() > 36000: # 10 hours.
             self.reset_clock() ;
             return "\u26A0\uFE0F Rappel ! \n \n "+self.pendu.show_lt()+"\n"+str(self.pendu) ;
     #
