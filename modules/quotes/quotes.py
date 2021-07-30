@@ -11,7 +11,7 @@ Draw_Time = namedtuple("Draw_Time", "hour minute");
 class quotes(module):
 
     def __init__(self, keyword = "quotes", hour = 0, minute = 0, log_path = "./modules/quotes/log.dic", is_permanent = False):
-        super().__init__(keyword, is_permanent) ;
+        super().__init__() ;
         self.keywords = ["quotes"] ; # <- Name of your module
         self.help = "A quote module" ; # <- will be printed out by the admin module
         self.module_name = "Quote Module"
@@ -42,18 +42,15 @@ class quotes(module):
         current_time = datetime.datetime.now();
         current_time_str = datetime.date(current_time.year, current_time.month, current_time.day).isoformat() ;
         # current_quote_index = (current_time.day+current_time.month*30+current_time.year*365)%len(self.quotes) ;
-        current_quote_index_tmp = datetime.datetime.now()-datetime.datetime(1961, 2,1);        
+        current_quote_index_tmp = datetime.datetime.now()-datetime.datetime(1961, 2,1);
         current_quote_index = (current_quote_index_tmp.days)%len(self.quotes);
         self.current_quote = self.quotes[current_quote_index] ;
         self.ret = "<b>~~~ \U0001f921 Today's Joke (" +  current_time_str +") ~~~</b>\n" \
                +self.current_quote["body"] +'\n'+'\t'*10+ "Category: <i>"+self.current_quote["category"]+"</i>" ;
 
-    @module.module_on_dec
-    @module.login_check_dec
     def process_msg_active(self, cmd, sender=None, room=None):
-        return self.ret;
+        return None;
 
-    @module.module_on_dec
     def run_on_clock(self, room=None):
         current_time = datetime.datetime.now() ;
         delta = current_time-self.log["last_draw"];
