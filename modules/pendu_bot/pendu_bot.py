@@ -24,7 +24,6 @@ class pendu_bot(module):
     def process_msg_active(self, cmd, sender = None, room = None):
         #
         match = re.fullmatch('\!([a-zA-Z]+)', (unidecode.unidecode(cmd)))
-        print("debug pendu ", match)
         if match:
             self.reset_clock();
             current_prop = match[0];
