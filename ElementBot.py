@@ -53,9 +53,10 @@ class elementBot(object):
     #
     async def message_cb(self, room, event):
         # On ignore les messages pendant 5 secondes ...
-        if not(self.toggle):
-            if ((datetime.datetime.now()-self.launch_at).seconds > 5):
-                self.toggle = True;
+        # if not(self.toggle):
+        #     if ((datetime.datetime.now()-self.launch_at).seconds > 5):
+        #         self.toggle = True;
+        self.toggle = True;
         if (self.toggle and event.sender != self.login and room.room_id == self.gaming_id):
             tmp_log = "Event" + bcolors.OKGREEN + " at " + str(datetime.datetime.now())+ bcolors.ENDC + " by "+ bcolors.OKBLUE + event.sender +bcolors.ENDC ;
             print(tmp_log);
