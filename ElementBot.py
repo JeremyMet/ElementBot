@@ -2,7 +2,8 @@
 
 import asyncio
 from nio import (AsyncClient, RoomMessageText)
-from datetime import datetime;
+import datetime;
+from src.bcolors import bcolors;
 #
 from modules.pendu_bot.pendu_bot import pendu_bot ;
 from modules.mastermind.mastermind_bot import mastermind_bot ;
@@ -21,7 +22,8 @@ class elementBot(object):
         self.toggle = False;
         self.login = login;
         self.module_array = [];
-
+        self.launch_at = datetime.datetime.now();
+    #
     async def send_message(self, message):
         await self.client.room_send(
             room_id=self.gaming_id,
@@ -33,19 +35,18 @@ class elementBot(object):
                 "formatted_body": message
             }
         ) ;
-
+    #
     async def connect(self, password):
         await self.client.login(password);
         gaming_id_tmp = await self.client.join(self.gaming_room);
         self.gaming_id = gaming_id_tmp.room_id;
         self.client.add_event_callback(self.message_cb, RoomMessageText);
         self.is_running = True;
-
-
+    #
     async def start_listening(self, msg=None):
         if msg:
             await self.send_message(msg);
-        self.launch_at = datetime.now();
+        self.launch_at = datetime.datetime.now();
         self.is_running = True ;
         while(self.is_running):
             await asyncio.gather(self.tick(), self.client.sync(timeout=30000));
@@ -53,14 +54,14 @@ class elementBot(object):
     async def message_cb(self, room, event):
         # On ignore les messages pendant 5 secondes ...
         if not(self.toggle):
-            now = datetime.now();
-            if (now-self.launch_at).seconds > 2:
+            if ((datetime.datetime.now()-self.launch_at).seconds > 5):
                 self.toggle = True;
         if (self.toggle and event.sender != self.login and room.room_id == self.gaming_id):
+            tmp_log = "Event" + bcolors.OKGREEN + " at " + str(datetime.datetime.now())+ bcolors.ENDC + " by "+ bcolors.OKBLUE + event.sender +bcolors.ENDC ;
+            print(tmp_log);
             msg = event.body;
             sender = event.sender;
             await self.parse_msg(msg, sender);
-
     #
     async def parse_msg(self, msg, sender):
         answer_array = [];
