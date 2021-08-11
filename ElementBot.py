@@ -81,6 +81,7 @@ async def main():
     #
     my_pendu = pendu_bot(); room_array[0].add_module(my_pendu);
     my_mastermind = mastermind_bot(); room_array[0].add_module(my_mastermind);
+    my_quote = quote(); room_array[0].add_module(my_quote);
     #
     await elementBot_inst.connect(password);
     await elementBot_inst.start_listening();
