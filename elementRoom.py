@@ -1,15 +1,16 @@
 import asyncio;
 from src.bcolors import bcolors;
 import datetime;
+#
+from functools import partial
 
 class elementRoom(object):
     #
-    def __init__(self, client, room_id):
+    def __init__(self, mailbox_address, room_id):
         self.room_id = room_id;
-        self.client = client;
-        self.real_id = None;
+        self.mailbox_address = mailbox_address;
+        self._real_id = None;
         self.module_set = set();
-        self.mailbox = [];
     #
     def add_module(self, module):
         self.module_set.add(module);
@@ -18,24 +19,11 @@ class elementRoom(object):
         if module in self.module_set:
             self.module_set.remove(module);
     #
-    async def connect(self):
-        tmp_real_id = await self.client.join(self.room_id);
-        self.real_id = tmp_real_id.room_id;
-    #
-    async def send_message(self, message):
-        await self.client.room_send(
-            room_id=self.real_id,
-            message_type="m.room.message",
-            content = {
-                "msgtype": "m.text",
-                "format": "org.matrix.custom.html",
-                "body": message,
-                "formatted_body": message
-            }
-        ) ;
+    async def set_real_id(self, real_id):
+        self._real_id = real_id;
     #
     async def message_cb(self, room, event):
-        if (room.room_id == self.real_id):
+        if (room.room_id == self._real_id):
             tmp_log = "Event from Room " + bcolors.OKGREEN + str(self.room_id) + bcolors.ENDC + \
              " at " + bcolors.OKGREEN + str(datetime.datetime.now())+ bcolors.ENDC + " by "+ bcolors.OKBLUE + event.sender +bcolors.ENDC ;
             print(tmp_log);
@@ -53,19 +41,27 @@ class elementRoom(object):
         if answer_array:
             clean = lambda m : m.replace("\n", "<br>");
             for answer in answer_array:
-                await self.send_message(clean(answer));
+                payload = {
+                    "content": clean(answer),
+                    "recipient": self._real_id
+                };
+                await self.mailbox_address(payload);
     # (Les fonctions se ressemblent beaucoup mais je préfère laisser cela ainsi, les interfaces étant assez différentes).
     async def check_module_on_tick(self):
         answer_array = [];
         loop = asyncio.get_event_loop();
         for module in self.module_set:
-            tmp_answer = await loop.run_in_executor(None, module.run_on_clock);
+            tmp_answer = await loop.run_in_executor(None, partial(module.run_on_clock, room=self.room_id));
             if tmp_answer:
                 answer_array.append(tmp_answer);
         if answer_array:
             clean = lambda m : m.replace("\n", "<br>");
             for answer in answer_array:
-                await self.send_message(clean(answer));
+                payload = {
+                    "content": clean(answer),
+                    "recipient": self._real_id
+                };
+                await self.mailbox_address(payload);
     #
     async def check_module_on_start(self):
         answer_array = [];
@@ -77,4 +73,8 @@ class elementRoom(object):
         if answer_array:
             clean = lambda m : m.replace("\n", "<br>");
             for answer in answer_array:
-                await self.send_message(clean(answer));
+                payload = {
+                    "content": clean(answer),
+                    "recipient": self._real_id
+                };
+                await self.mailbox_address(payload);

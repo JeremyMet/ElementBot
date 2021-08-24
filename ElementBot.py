@@ -22,13 +22,26 @@ class elementBot(object):
         self.client = AsyncClient(host, login);
         self.login = login;
         self.module_array = [];
+        self.mailbox = [];
         self.room_set = set();
         # (pour éviter d'écouter les premiers messages).
         self.launch_at = datetime.datetime.now();
         self.toggle = False;
     #
+    async def send_message(self, real_id, message):
+        await self.client.room_send(
+            room_id=real_id,
+            message_type="m.room.message",
+            content = {
+                "msgtype": "m.notice",
+                "format": "org.matrix.custom.html",
+                "body": message,
+                "formatted_body": message
+            }
+        ) ;
+    #
     def add_room(self, room_id):
-        room = elementRoom(self.client, room_id);
+        room = elementRoom(self.push_message, room_id);
         self.room_set.add(room);
         return room;
     #
@@ -39,7 +52,8 @@ class elementBot(object):
     async def connect(self, password):
         await self.client.login(password);
         for roomObject in self.room_set:
-            await roomObject.connect();
+            tmp_real_id = await self.client.join(roomObject.room_id);
+            await roomObject.set_real_id(tmp_real_id.room_id);
             await roomObject.check_module_on_start();
         self.is_running = True;
         self.client.add_event_callback(self.message_cb, RoomMessageText);
@@ -48,7 +62,7 @@ class elementBot(object):
         self.launch_at = datetime.datetime.now();
         self.is_running = True ;
         while(self.is_running):
-            await asyncio.gather(self.tick(), self.client.sync(timeout=30000));
+            await asyncio.gather(self.process_mailbox(), self.tick(), self.client.sync(timeout=30000));
     #
     async def message_cb(self, room, event):
         # On ignore les messages pendant 2 secondes ...
@@ -63,6 +77,18 @@ class elementBot(object):
         await asyncio.sleep(delay);
         for roomObject in self.room_set:
             await roomObject.check_module_on_tick();
+    #
+    async def push_message(self, msg):
+        self.mailbox.append(msg);
+    #
+    async def process_mailbox(self, delay=1):
+        await asyncio.sleep(delay);
+        while(self.mailbox):
+            payload = self.mailbox.pop();
+            recipient = payload["recipient"];
+            content = payload["content"];
+            await self.send_message(recipient, content);
+    #
 
 async def main():
     with open("config.json", "r") as f:

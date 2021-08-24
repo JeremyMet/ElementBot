@@ -2,6 +2,7 @@ import json
 import random
 import re
 import unidecode
+#
 from .pendu import pendu
 from modules.module import module ;
 
@@ -55,10 +56,11 @@ class pendu_bot(module):
             return None ;
     #
     def run_on_clock(self, room=None):
-        if self.get_clock() > 3600: # 1 hour.
+        self.clock_update();
+        if self.get_clock() > 18000: # 5 hours.
             self.pendu.save_score() ;
             self.reset_clock() ;
-            return "\u26A0\uFE0F Rappel ! \n \n "+self.pendu.show_lt()+"\n"+str(self.pendu) ;
+            return "\U0001f4be <b>Sauvegarde du Score</b> \n\u26A0\uFE0F Rappel ! \n"+str(self.pendu) ;
     #
     def exit(self):
         self.pendu.save_score() ;
