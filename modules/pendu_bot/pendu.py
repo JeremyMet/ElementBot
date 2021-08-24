@@ -76,7 +76,7 @@ class pendu(object):
             x+= "["+not_in_word_lt_str[:-2]+"]"
         if self.word_list:
             x+= " (\U0001f4d6)"
-        life_str = "\n[{}] Vie : ".format("\U0001f49f" if self.life>0 else "\u2620\uFE0F")+"~"*(self.life_max-self.life)+")\\"+"~"*(self.life) + "\\o/~~";
+        life_str = "\n[{}] Vie : ".format("\U0001f49f" if self.life>0 else "\u2620\uFE0F")+"<font color=#009eff>~</font>"*(self.life_max-self.life)+"<font color=#a6a6a1>)\\</font>"+"<font color=#009eff>~</font>"*(self.life) + "<font color=#a6a6a1>\\o/</font><font color=#009eff>~~</font>";
         x+=life_str ;
         if self.bonus_life > 0:
             x+="<font color=\"green\"> (+{})</font>".format(self.bonus_life);
