@@ -26,7 +26,7 @@ class pendu_bot(module):
         #
         match = re.fullmatch('\!([a-zA-Z]+)', (unidecode.unidecode(cmd)))
         if match:
-            self.reset_clock();
+            # self.reset_clock();
             current_prop = match[0];
             tmp_str = self.pendu.propose(current_prop[1:]);
             return tmp_str;
@@ -57,7 +57,8 @@ class pendu_bot(module):
     #
     def run_on_clock(self, room=None):
         self.clock_update();
-        if self.get_clock() > 18000: # 5 hours.
+        print(">>> ", self.get_clock());
+        if self.get_clock() > 14400: # 4 hours.
             self.pendu.save_score() ;
             self.reset_clock() ;
             return "\U0001f4be <b>Sauvegarde du Score</b> \n\u26A0\uFE0F Rappel ! \n"+str(self.pendu) ;

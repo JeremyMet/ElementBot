@@ -58,11 +58,11 @@ class elementBot(object):
         self.is_running = True;
         self.client.add_event_callback(self.message_cb, RoomMessageText);
     #
-    async def start_listening(self):
+    async def start_listening(self, delay=1):
         self.launch_at = datetime.datetime.now();
         self.is_running = True ;
         while(self.is_running):
-            await asyncio.gather(self.process_mailbox(), self.tick(), self.client.sync(timeout=30000));
+            await asyncio.gather(self.process_mailbox(), self.tick(), self.client.sync(timeout=1000), asyncio.sleep(delay));
     #
     async def message_cb(self, room, event):
         # On ignore les messages pendant 2 secondes ...
@@ -73,8 +73,7 @@ class elementBot(object):
             for roomObject in self.room_set:
                 await roomObject.message_cb(room, event);
     #
-    async def tick(self, delay=1):
-        await asyncio.sleep(delay);
+    async def tick(self):
         for roomObject in self.room_set:
             await roomObject.check_module_on_tick();
     #
