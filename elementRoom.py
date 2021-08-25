@@ -48,7 +48,6 @@ class elementRoom(object):
                 await self.mailbox_address(payload);
     # (Les fonctions se ressemblent beaucoup mais je préfère laisser cela ainsi, les interfaces étant assez différentes).
     async def check_module_on_tick(self):
-        print("check")
         answer_array = [];
         loop = asyncio.get_event_loop();
         for module in self.module_set:

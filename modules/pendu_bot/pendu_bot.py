@@ -57,7 +57,6 @@ class pendu_bot(module):
     #
     def run_on_clock(self, room=None):
         self.clock_update();
-        print(">>> ", self.get_clock());
         if self.get_clock() > 14400: # 4 hours.
             self.pendu.save_score() ;
             self.reset_clock() ;
