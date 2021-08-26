@@ -1,6 +1,8 @@
+import datetime;
+
 class module(object):
     def __init__(self):
-        self.clock = 0;
+        self.clock = datetime.datetime.now();
     #
     def run_on_clock(self, room=None):
         pass
@@ -11,14 +13,13 @@ class module(object):
     def on_start(self):
         return None;
     #
-    def clock_update(self):
-        self.clock += 1 ;
-    #
     def get_clock(self):
-        return self.clock ;
+        now = datetime.datetime.now();
+        delta = (now-self.clock).seconds;
+        return delta ;
     #
     def process_msg_active(instruction, sender, room):
         pass
     #
     def reset_clock(self):
-        self.clock = 0;
+        self.clock = datetime.datetime.now();
