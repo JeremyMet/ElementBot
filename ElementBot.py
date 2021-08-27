@@ -104,8 +104,8 @@ async def main():
     for room in rooms:
         room_array.append(elementBot_inst.add_room(room))
     #
-    for room_object in room_array:
-        room_object.add_module(pendu_bot());
+    for i, room_object in enumerate(room_array):
+        room_object.add_module(pendu_bot(scorefile_path="./modules/pendu_bot/score_{}.txt".format(i)));
         room_object.add_module(mastermind_bot());
     #
     my_quote = quotes(); room_array[0].add_module(my_quote);

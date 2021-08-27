@@ -14,11 +14,12 @@ class pendu(object):
 
     dico_tuple = namedtuple("dico_tuple", "emoji words")
 
-    def __init__(self, default_dic="fr"):
+    def __init__(self, default_dic="fr", scorefile_path="./modules/pendu_bot/score.json"):
         # --- Score
         self.score = {} ;
         self.score["bot"] = 0 ;
         self.score["main"] = 0 ;
+        self.scorefile_path = scorefile_path;
         # --- Event Management
         self.events = {} ;
         self.events_total_weight = 0 ;
@@ -49,8 +50,8 @@ class pendu(object):
                 for i in range(len(tmp_dic)):
                     tmp_dic[i] = unidecode.unidecode(tmp_dic[i]) ;
             self.dico[dico_language] = pendu.dico_tuple(dic["emoji"], tmp_dic);
-        if os.path.isfile(self.conf["score_path"]):
-            with open(self.conf["score_path"], 'r') as f:
+        if os.path.isfile(self.scorefile_path):
+            with open(self.scorefile_path, 'r') as f:
                 self.score = json.load(f);
         self.load_events() ;
         self.rst() ;
@@ -158,15 +159,12 @@ class pendu(object):
                     return x;
                 else:
                     return "Le mot \"{}\" a déjà été proposé.".format(lt.capitalize());
-
-
+        #
         if self.unauthorized_letters:
             if lt in self.unauthorized_letters:
                 x = "\u26A0\uFE0F Vous ne pouvez pas jouer la lettre \""+lt.capitalize()+"\" ...\n";
                 return x ;
-
-
-
+        #
         if lt in self.lt:
             x = "\u26A0\uFE0F La lettre "+lt+" a déjà été proposée ! ...\n" ;
             return x ;
@@ -211,7 +209,7 @@ class pendu(object):
         self.current_word = current_word.lower() ;
 
     def save_score(self):
-        with open(self.conf["score_path"], 'w') as f:
+        with open(self.scorefile_path, 'w') as f:
             json.dump(self.score, f);
 
     def get_word_list(self):

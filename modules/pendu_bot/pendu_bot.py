@@ -9,13 +9,14 @@ from modules.module import module ;
 class pendu_bot(module):
 
 
-    def __init__(self, keyword = "pendu"): # <- template ... Here goes your default module name
+    def __init__(self, keyword = "pendu", scorefile_path="./modules/pendu_bot/score.json"): # <- template ... Here goes your default module name
         super().__init__();
         self.module_name = "pendu_bot"
         self.help = "type tbot pendu help for further details.";
         self.whatis = "Un simple jeu du pendu."
         self.__version__ = "0.0.1"
-        self.pendu = pendu() ;
+        self.scorefile_path = scorefile_path;
+        self.pendu = pendu(scorefile_path=self.scorefile_path) ;
         self.keyword = keyword;
     #
     def on_start(self):
@@ -56,7 +57,7 @@ class pendu_bot(module):
             return None ;
     #
     def run_on_clock(self, room=None):
-        if self.get_clock() > 28800: # 8 hours.
+        if self.get_clock() > 20: #28800: # 8 hours.
             self.pendu.save_score() ;
             self.reset_clock() ;
             return "\U0001f4be <b>Sauvegarde du Score</b> \U0001f4be\n\u26A0\uFE0F Rappel ! \n"+str(self.pendu) ;
