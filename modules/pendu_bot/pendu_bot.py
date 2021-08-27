@@ -56,11 +56,10 @@ class pendu_bot(module):
             return None ;
     #
     def run_on_clock(self, room=None):
-        self.clock_update();
-        if self.get_clock() > 14400: # 4 hours.
+        if self.get_clock() > 28800: # 8 hours.
             self.pendu.save_score() ;
             self.reset_clock() ;
-            return "\U0001f4be <b>Sauvegarde du Score</b> \n\u26A0\uFE0F Rappel ! \n"+str(self.pendu) ;
+            return "\U0001f4be <b>Sauvegarde du Score</b> \U0001f4be\n\u26A0\uFE0F Rappel ! \n"+str(self.pendu) ;
     #
     def exit(self):
         self.pendu.save_score() ;
