@@ -57,7 +57,7 @@ class pendu_bot(module):
             return None ;
     #
     def run_on_clock(self, room=None):
-        if self.get_clock() > 20: #28800: # 8 hours.
+        if self.get_clock() > 300: #28800: # 8 hours.
             self.pendu.save_score() ;
             self.reset_clock() ;
             return "\U0001f4be <b>Sauvegarde du Score</b> \U0001f4be\n\u26A0\uFE0F Rappel ! \n"+str(self.pendu) ;
