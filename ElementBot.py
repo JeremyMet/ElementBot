@@ -1,3 +1,5 @@
+# TODO
+# remplacer gather avec un wait for ?
 #
 import asyncio
 from nio import (AsyncClient, RoomMessageText)
@@ -81,14 +83,12 @@ class elementBot(object):
         self.mailbox.append(msg);
     #
     async def process_mailbox(self, delay=1):
-        await asyncio.sleep(delay);
         while(self.mailbox):
             payload = self.mailbox.pop();
             recipient = payload["recipient"];
             content = payload["content"];
             await self.send_message(recipient, content);
     #
-
 async def main():
     with open("config.json", "r") as f:
         config = json.load(f);
@@ -104,13 +104,14 @@ async def main():
     for room in rooms:
         room_array.append(elementBot_inst.add_room(room))
     #
-    my_pendu = pendu_bot(); room_array[0].add_module(my_pendu);
-    my_mastermind = mastermind_bot(); room_array[0].add_module(my_mastermind);
+    for room_object in room_array:
+        room_object.add_module(pendu_bot());
+        room_object.add_module(mastermind_bot());
+    #
     my_quote = quotes(); room_array[0].add_module(my_quote);
     #
     await elementBot_inst.connect(password);
     await elementBot_inst.start_listening();
-
-
+#
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
