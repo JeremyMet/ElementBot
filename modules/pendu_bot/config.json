@@ -9,6 +9,11 @@
          "language":"en",
          "path":"./modules/pendu_bot/dico_en.txt",
          "emoji":"\uD83C\uDDEC\uD83C\uDDE7"
+      },
+      {
+         "language":"ev",
+         "path":"./modules/pendu_bot/dico_event.txt",
+         "emoji":"\uD83C\uDF83"
       }
    ],
    "score_path":"./modules/pendu_bot/score.txt",
