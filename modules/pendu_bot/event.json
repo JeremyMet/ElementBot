@@ -121,7 +121,7 @@
   },
   "halloween": {
     "weight" : 100,
-    "message" : "<font color =\" #e67e22\">Octobre. La nuit nous surprend, chaque fois un peu plus tôt. L'automne est là, les premières feuilles mortes (\uD83C\uDF42) sont tombées et tapissent un sol regorgeant d'innombrables créatures (\uD83D\uDC7B). Cet humus en devenir camoufle les pas qui nous suivent. Ambiance lugubre oblige, le bot se voit pris d'envies de frissons et sort son Ouija. Il te défie ! Le mot ou la vie ? </font>(<b>Thème</b> : <i>Halloween</i>).",
+    "message" : "<font color =\"#ffb900\">Octobre. La nuit nous surprend, chaque fois un peu plus tôt. L'automne est là, les premières feuilles mortes (\uD83C\uDF42) sont tombées et tapissent un sol regorgeant d'innombrables créatures (\uD83D\uDC7B). Cet humus en devenir camoufle les pas qui nous suivent. Ambiance lugubre oblige, le bot se voit pris d'envies de frissons et sort son Ouija. Il te défie ! Le mot ou la vie ? </font>(<b>Thème</b> : <i>Halloween</i>).",
     "min_lg" : 3,
     "max_lg" : 20,
     "bonus_life" : 0,
