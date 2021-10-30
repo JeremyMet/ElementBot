@@ -11,9 +11,14 @@
          "emoji":"\uD83C\uDDEC\uD83C\uDDE7"
       },
       {
-         "language":"ev",
+         "language":"hw",
          "path":"./modules/pendu_bot/dico_event.txt",
          "emoji":"\uD83C\uDF83"
+      },
+      {
+         "language":"ms",
+         "path":"./modules/pendu_bot/dico_event_2.txt",
+         "emoji":"\uD83E\uDDDB"
       }
    ],
    "score_path":"./modules/pendu_bot/score.txt",

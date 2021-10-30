@@ -126,7 +126,17 @@
     "max_lg" : 20,
     "bonus_life" : 0,
     "mirror": "no",
-    "language" : "ev",
+    "language" : "hw",
+    "unauthorized_letters" : []
+  },
+  "monstres": {
+    "weight" : 200,
+    "message" : "<font color =\"#FF0000\"> Les monstres grouillent à l'entrée de ce sombre cimetière (\uD83E\uDEA6) ! Vous ne percevez que leurs silhouettes (\uD83D\uDC7B), à vous de les identifier !</font> (<b>Thème</b> : <i>Monstres/Halloween</i>).",
+    "min_lg" : 3,
+    "max_lg" : 25,
+    "bonus_life" : 0,
+    "mirror": "no",
+    "language" : "ms",
     "unauthorized_letters" : []
   }
 }
