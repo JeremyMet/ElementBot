@@ -19,6 +19,11 @@
          "language":"ms",
          "path":"./modules/pendu_bot/dico_event_2.txt",
          "emoji":"\uD83E\uDDDB"
+      },
+      {
+         "language":"xs",
+         "path":"./modules/pendu_bot/dico_event_3.txt",
+         "emoji":"\uD83C\uDF85"
       }
    ],
    "score_path":"./modules/pendu_bot/score.txt",
