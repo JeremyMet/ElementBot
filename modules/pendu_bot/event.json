@@ -141,7 +141,7 @@
   },
   "noel": {
     "weight" : 100,
-    "message" : "<font color =\"#00AA00\"> Le père <b>Noël</b> ne devrait pas tarder. Ne serait-ce d'ailleurs pas ses rennes que l'on entend au loin ?  Quelques mots semblent s'échapper d'un distant brouhaha ... Que Radolphe est-il en train de vous dire ? </font> (<i>Thème : Noël</i>).",
+    "message" : "<font color =\"#00AA00\"> Le père <b>Noël</b> ne devrait pas tarder. Ne serait-ce d'ailleurs pas ses rennes que l'on entend au loin ?  Quelques mots semblent s'échapper d'un distant brouhaha ... Que Rudolph est-il en train de vous dire ? </font> (<i>Thème : Noël</i>).",
     "min_lg" : 3,
     "max_lg" : 25,
     "bonus_life" : 0,
